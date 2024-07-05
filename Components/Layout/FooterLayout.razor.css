@@ -1,0 +1,22 @@
+﻿footer {
+	position:absolute;
+	text-align:center;
+	bottom:0;
+	height:fit-content;
+	padding:10px;
+	width:100%;
+	text-align:center;
+}
+
+p{
+	margin-block: 4px;
+}
+
+img{
+	height:20px;
+	width: auto;
+}
+
+span{
+	padding:20px;
+}

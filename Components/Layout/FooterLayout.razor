@@ -1,0 +1,53 @@
+﻿@using Models
+
+
+<footer style="background-color:@colScheme.Background;">
+
+		@foreach(string file in Directory.EnumerateFiles(LogosDir, "*.png")){
+			<span>
+				<a href=@GetImgLink(file) target="_blank">
+					<img src=@GetImgPath(file)/>
+					@*@GetImgLink(file).Split(new char[]{'/', '.'})[0]*@
+				</a>
+			</span>
+		}
+
+		<p>Mabe using C-hashtag and Blazor</p>
+		<p>2024 Alan</p>
+</footer>
+
+@code{
+	// colour scheme
+	private ColourScheme colScheme = new() { Background = "black", ContentCol="white"};
+	private string filePath = "";
+	// Need to add the links to accounts on the images 
+	private string LogosDir = "wwwroot/images/logos/footer_logos/";	
+
+	protected string GetImgPath(string file){
+		if(file.StartsWith("wwwroot")){
+			string[] tmp = file.Split("/");
+			tmp[0] = "";
+			this.filePath = String.Join("/", tmp);
+		}
+		return filePath;
+	}
+
+	protected string GetImgLink(string file)
+	{
+		string path = GetImgPath(file);
+		int len = path.Split("/").Length;
+		string val = path.Split("/")[len-1].Split("_")[0];
+		return MatchLink(val);
+	}
+
+	string MatchLink(string name) =>
+	name switch
+	{
+		"github" => "https://github.com/rlAlan",
+		"linkdn" =>"https://www.linkedin.com/in/alan-selormey-1319a72b9",
+		"instagram" => "https://www.instagram.com/aln2045/",
+		"discord" => "https://discordapp.com/channels/@rl/#5632/",
+		_=> "hey"
+	};
+
+}

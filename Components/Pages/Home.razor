@@ -1,0 +1,72 @@
+﻿@page "/"
+
+@using Models
+
+@*Using bootstrap to handle the UI for the table*@
+@*sort out the colour it uses whatever we set in Main layout and not app*@
+
+<PageTitle>Alan</PageTitle>
+
+<main>
+	<div>
+		<div class="container">
+			<div class="wrapper">
+				<header class="inner index">
+					<h1 class="fw-bold"> Hey its Alan</h1>
+					<p class="inner-description small width"> stuff about me are...</p>
+				</header>
+			</div>
+		</div>
+	</div>
+
+	<div class="tenor-gif-embed" data-postid="17691199049790448563" data-share-method="host"
+		data-aspect-ratio="1.2973" data-width="100%">
+		<button onClick="window.location.reload();">Refresh Page</button>
+		<a href="https://tenor.com/view/wtf-gif-17691199049790448563">
+			Wtf GIF
+		</a>from 
+		<a href="https://tenor.com/search/wtf-gifs">
+			Wtf GIFs</a>
+	</div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+</main>
+
+@*hey there what*@
+
+@*<div class="container">
+	<div class="hero-wrapper">
+		<p>Hey there</p>
+	</div>
+</div>*@
+
+@*<div class="main-div">
+	<p class="elipse">. . .</p>
+	<p>Hey There 👋. My name is Alan Selormey and this is my personal website and blog.</p>
+	<p>Here youll find all the projects I get up to and any miscelanious things I want people to know about.</p>
+</div>*@
+
+
+@*<div>
+	<section class="container-fluid intro-section">
+		<div class="container intro-div">
+			<img src="cool_image.jpg" class="rounded d-block" style="max-height:100%" alt="hey failed"/>
+			<p style="padding-left:20px">Alan Selormey</p>
+			<p style="padding-left:20px; color: @colScheme.ContentCol">I can do this</p>
+		</div>
+	</section>
+</div>
+
+<div class="col-md-8 col-sm-12 col-xs-12">
+	<section class="container about-section" style="background-color: darkmagenta;">
+			<div class="inner-div">
+				<h3 class="fw-bold">About Me</h3>
+				<p class="fs-4" style="color: @colScheme.ContentCol">Hello there! My Name is Alan and I'd like to welcome you to my website.</p>
+				<p class="fs-4"></p>
+			</div>
+	</section>
+</div>*@
+
+
+@code{
+	private ColourScheme colScheme = new() {ContentCol="white"};
+}

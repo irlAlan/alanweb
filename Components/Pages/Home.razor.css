@@ -1,0 +1,22 @@
+﻿.intro-section{
+    padding:15px;
+}
+
+.intro-div {
+    display: flex;
+    justify-content: center;
+}
+
+.about-section{
+    margin-bottom: 30px;
+    width: 500px;
+    justify-content:center;
+}
+
+.inner-div{
+    padding: 30px;
+}
+
+img{
+    max-height:100%;
+}

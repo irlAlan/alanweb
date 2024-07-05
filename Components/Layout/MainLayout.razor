@@ -1,0 +1,17 @@
+﻿@inherits LayoutComponentBase
+@using Models
+
+@*
+	Move the css into a MainLayout.razor.css file
+	Add some dynamic csharp for the image loading
+*@
+<div id="layout" style="background-color: @colScheme.Background;">
+	<NavMenu/>
+	@Body
+</div>
+<FooterLayout/>
+
+@code{
+	private ColourScheme colScheme = new() { Background = "#fcbf49", ContentCol="white" };
+	// 2D3142
+}

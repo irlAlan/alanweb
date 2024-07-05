@@ -1,0 +1,95 @@
+﻿@using Models
+
+@*
+    TODO: sort out the search function here
+          sort out the blog portion (needs backend)
+    F25757
+    #957186
+    D5F9DE
+    0B3948
+*@
+
+
+<nav class="navbar sticky-top navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="#">
+        <img src="images/icons/red_panda.png"/>
+        Alan's Web
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">
+              <img class="icon-img" src="images/icons/house.png"/>
+              Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Projects">
+              <img class="icon-img" src="images/icons/projects.png"/>
+              Projects
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="icon-img" src="images/icons/blog.png"/>
+            Blog 
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">STEM</a></li>
+            <li><a class="dropdown-item" href="#">Photography</a></li>
+            <li><hr class="dropdown-divider"></li>
+            @*<li><a class="dropdown-item" href="#">Something else here</a></li>*@
+          </ul>
+        </li>
+      </ul>
+      @*<form class="d-flex" role="search">
+        <input class="form-control me-2" type="Search" placeholder="Search" 
+            aria-label="Search" @bind-value="SearchText" onsubmit="SearchFiles">
+        <button class="btn btn-outline-success" type="submit" @onclick="SearchIssue">Search</button>
+      </form>*@
+    </div>
+  </div>
+</nav>
+
+@code{
+    Search Search = new Search();
+    public string SearchText = "";
+    public string filePath = "../Pages/";
+    void SearchIssue()
+    {
+
+    }
+    string SearchFiles()
+    {
+        string test = "Projects";
+        Search.SearchText = SearchText;
+        Dictionary<string, List<string>> contents = new Dictionary<string, List<string>>();
+        foreach (string file in Directory.EnumerateFiles(filePath, "*.razor"))
+        {
+            int len = filePath.Split("/").Length;
+            string val = filePath.Split("/")[len-1].Split(".")[0];
+            contents.Add(val, File.ReadAllText(file).Split(new Char[]{' ', '.', ',' ,'/','\\'}).ToList());
+        }
+        int index = 0;
+        List<string> keyList = new List<string>(contents.Keys);
+        foreach(List<string> line in contents.Values)
+        {
+            foreach(string word in line)
+            {
+                if(test == word)
+                {
+                    return keyList[index];
+                }
+            }
+            index++;
+        }
+        return "none";
+    }
+    // get all the contents of a file and its name as a dictionary
+    // search the value of the dictionary and if it matches display the name of the file
+    // List<string> FilteredText;
+}
